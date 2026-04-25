@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 - Page Not Found | ShineVerse Global Inc.</title>
+<link href="https://fonts.googleapis.com/css2?family=Exo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Exo', sans-serif; background: #09002a; color: #fff; min-height: 100vh; display: flex; flex-direction: column; }
+a { text-decoration: none; color: inherit; }
+p { color: #aaa6b9; line-height: 1.75; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+header { position: fixed; left: 0; right: 0; z-index: 99; padding: 12px 0; background: rgba(20,14,56,0.9); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+.logo img { width: 90px; }
+nav ul { display: flex; align-items: center; gap: 28px; }
+nav ul li a { color: #e5e7eb; font-size: 0.95rem; font-weight: 600; text-transform: uppercase; transition: color 0.3s; }
+nav ul li a:hover { color: #b154f0; }
+.mobile-toggle { display: none; font-size: 1.5rem; color: #fff; cursor: pointer; }
+section { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; padding: 120px 20px 60px; }
+.error-code { font-size: 10rem; font-weight: 900; color: #b154f0; line-height: 1; margin-bottom: 20px; text-shadow: 4px 4px 0 rgba(177,84,240,0.3); }
+.error-title { font-size: 2rem; margin-bottom: 15px; }
+.error-text { font-size: 1.1rem; margin-bottom: 35px; max-width: 500px; margin-left: auto; margin-right: auto; }
+.btn-home { display: inline-flex; align-items: center; gap: 8px; background: #b154f0; color: #fff; padding: 16px 40px; border-radius: 8px; font-weight: 700; font-size: 1.1rem; text-transform: uppercase; transition: opacity 0.3s; }
+.btn-home:hover { opacity: 0.85; }
+footer { background: #140e38; padding: 40px 0; text-align: center; margin-top: auto; }
+footer p { color: #6c757d; font-size: 0.85rem; }
+footer .links { display: flex; justify-content: center; gap: 30px; margin-top: 10px; }
+footer .links a { color: #6c757d; font-size: 0.85rem; text-transform: uppercase; transition: color 0.3s; }
+footer .links a:hover { color: #b154f0; }
+@media (max-width: 992px) { header nav { display: none; } .mobile-toggle { display: block; } .header-inner { padding: 0 20px; } .error-code { font-size: 6rem; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo" style="font-size:1.5rem;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:2px;">ShineVerse</a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="match.html">Match</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-toggle" onclick="openMenu()">☰</div>
+  </div>
+</header>
+
+<section>
+  <div>
+    <div class="error-code">404</div>
+    <h1 class="error-title">Page Not Found</h1>
+    <p class="error-text">The page you're looking for doesn't exist or has been moved. Let's get you back on track!</p>
+    <a href="index.html" class="btn-home">🏠 Back to Home</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© 2026 ShineVerse Global Inc.</p>
+    <div class="links">
+      <a href="terms/index.html">TERMS OF SERVICE</a>
+      <a href="privacy/index.html">PRIVACY POLICY</a>
+    </div>
+  </div>
+</footer>
+<script>
+function openMenu() { document.getElementById('mobileMenu').classList.add('open'); document.getElementById('mobileOverlay').classList.add('show'); }
+function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('mobileOverlay').classList.remove('show'); }
+</script>
+</body>
+</html>

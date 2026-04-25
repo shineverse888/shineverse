@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Navigator - ShineVerse Global Inc.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Exo', sans-serif; background: #09002a; color: #fff; overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { max-width: 100%; display: inline-block; }
+p { color: #aaa6b9; line-height: 1.75; margin-bottom: 1rem; font-size: 1rem; }
+p:last-child { margin-bottom: 0; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+
+/* Header */
+header { position: fixed; left: 0; right: 0; z-index: 99; padding: 12px 0; background: rgba(20,14,56,0.9); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+.logo img { width: 90px; height: auto; }
+nav ul { display: flex; align-items: center; gap: 28px; }
+nav ul li a { color: #e5e7eb; font-size: 0.95rem; font-weight: 600; text-transform: uppercase; transition: color 0.3s; letter-spacing: 0.5px; }
+nav ul li a:hover, nav ul li a.active { color: #b154f0; }
+nav ul li { position: relative; }
+nav ul li .sub-menu { position: absolute; top: 100%; left: 0; background: #140e38; min-width: 200px; padding: 10px 0; opacity: 0; visibility: hidden; transition: all 0.3s; border-radius: 8px; }
+nav ul li:hover .sub-menu { opacity: 1; visibility: visible; }
+nav ul li .sub-menu li { padding: 0; }
+nav ul li .sub-menu a { padding: 8px 20px; display: block; font-size: 0.85rem; text-transform: none; }
+.signup-btn { display: flex; align-items: center; background: url(images/others/btn-signup.webp) no-repeat center/contain; height: 60px; width: 157px; justify-content: center; font-weight: 700; text-transform: uppercase; color: #fff; font-size: 1rem; transition: opacity 0.3s; }
+.signup-btn:hover { opacity: 0.8; }
+.signup-btn img { width: 14px; height: 14px; margin-left: 6px; transition: margin 0.3s; }
+.signup-btn:hover img { margin-left: 10px; }
+
+.mobile-toggle { display: none; font-size: 1.5rem; color: #fff; cursor: pointer; }
+
+/* Hero */
+.hero { position: relative; background: url(images/bg/hero-bg-new.png) no-repeat; background-size: cover; background-position: center; padding-bottom: 35%; min-height: 500px; }
+.hero-text { position: absolute; top: 50%; left: 10%; transform: translateY(-60%); z-index: 10; }
+.hero-text p { font-size: clamp(0.8rem, 1.5vw, 1.5rem); color: #aaa; font-weight: 600; margin-bottom: 0.5vw; }
+.hero-img { position: absolute; right: 10%; bottom: 15%; display: flex; flex-direction: row-reverse; align-items: flex-end; }
+.hero-img img { width: 20vw; max-width: 360px; min-width: 110px; margin-right: 10vw; margin-bottom: 2vw; }
+
+/* Sections */
+.section-title { text-align: center; margin-bottom: 40px; }
+.section-title h2 { font-size: 2.25rem; font-weight: 700; text-transform: uppercase; margin-bottom: 15px; }
+.section-title p { color: #aaa6b9; font-size: 1.1rem; }
+.section-padding { padding: 80px 0; }
+
+/* Popular Games */
+.popular-section { text-align: center; padding: 60px 20px; }
+.popular-section h2 { font-size: 2rem; margin-bottom: 15px; }
+.game-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; max-width: 800px; margin: 30px auto 0; }
+.game-grid img { width: 100%; max-width: 200px; margin: 0 auto; }
+
+/* Service Cards */
+.service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px; }
+.service-card { text-align: center; background: no-repeat center/cover; padding: 40px 30px; border-radius: 12px; min-height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.service-card img { width: 120px; height: auto; margin-bottom: 30px; }
+.service-card h3 { font-size: 1.5rem; font-weight: 700; text-transform: uppercase; margin-bottom: 15px; }
+.service-card p { color: #d1d5db; font-size: 1rem; }
+
+/* Footer */
+footer { background: #140e38; padding: 60px 0 0; }
+.footer-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; }
+.footer-left .logo { margin-bottom: 20px; }
+.social-icons { display: flex; gap: 12px; margin-top: 20px; }
+.social-icons img { width: 40px; height: 40px; object-fit: contain; }
+.footer-right { text-align: right; }
+.footer-right h3 { font-size: 1.5rem; text-transform: uppercase; margin-bottom: 20px; }
+.footer-right span { color: #b154f0; display: block; margin-bottom: 5px; }
+.footer-bottom { border-top: 1px solid #281d59; padding: 20px 0; margin-top: 40px; text-align: center; }
+.footer-bottom p { color: #6c757d; font-size: 0.85rem; }
+.footer-links { display: flex; justify-content: center; gap: 30px; margin-top: 10px; }
+.footer-links a { color: #6c757d; font-size: 0.85rem; text-transform: uppercase; transition: color 0.3s; }
+.footer-links a:hover { color: #b154f0; }
+
+/* Buttons */
+.btn-primary { display: inline-flex; align-items: center; justify-content: center; background: #b154f0; color: #fff; font-weight: 700; text-transform: uppercase; padding: 16px 40px; border-radius: 6px; transition: opacity 0.3s; font-size: 1.1rem; border: none; cursor: pointer; }
+.btn-primary:hover { opacity: 0.85; }
+.btn-outline { display: inline-flex; align-items: center; justify-content: center; border: 2px solid #b154f0; color: #fff; font-weight: 600; padding: 14px 36px; border-radius: 6px; transition: all 0.3s; background: transparent; }
+.btn-outline:hover { background: #b154f0; }
+
+/* Page Banner */
+.page-banner { background: #140e38; padding: 120px 0 60px; text-align: center; }
+.page-banner h1 { font-size: 2.5rem; text-transform: uppercase; font-weight: 700; margin-bottom: 10px; }
+.page-banner p { color: #aaa6b9; }
+
+/* Cards Grid */
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
+.card { background: #140e38; border-radius: 12px; padding: 30px; text-align: center; transition: transform 0.3s; border: 1px solid #281d59; }
+.card:hover { transform: translateY(-5px); }
+.card img { width: 80px; height: 80px; object-fit: contain; margin-bottom: 15px; border-radius: 50%; }
+.card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+.card p { font-size: 0.9rem; color: #9ca3af; }
+.card .btn-outline { margin-top: 15px; font-size: 0.85rem; padding: 10px 24px; }
+
+/* FAQ */
+.faq-list { max-width: 800px; margin: 0 auto; }
+.faq-item { background: #140e38; border: 1px solid #281d59; border-radius: 10px; margin-bottom: 15px; overflow: hidden; }
+.faq-question { padding: 20px 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 1.05rem; transition: color 0.3s; }
+.faq-question:hover { color: #b154f0; }
+.faq-question .icon { font-size: 1.2rem; transition: transform 0.3s; }
+.faq-item.active .faq-question .icon { transform: rotate(45deg); }
+.faq-answer { max-height: 0; padding: 0 25px; overflow: hidden; transition: all 0.3s; }
+.faq-item.active .faq-answer { max-height: 300px; padding: 0 25px 20px; }
+.faq-answer p { color: #9ca3af; }
+
+/* Form */
+.contact-form { max-width: 600px; margin: 0 auto; }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #e5e7eb; }
+.form-group input, .form-group textarea, .form-group select { width: 100%; padding: 14px 18px; background: #140e38; border: 1px solid #281d59; border-radius: 8px; color: #fff; font-family: 'Exo', sans-serif; font-size: 1rem; outline: none; transition: border 0.3s; }
+.form-group input:focus, .form-group textarea:focus { border-color: #b154f0; }
+.form-group textarea { min-height: 140px; resize: vertical; }
+
+/* 404 */
+.error-page { text-align: center; padding: 120px 20px; }
+.error-page h1 { font-size: 8rem; color: #b154f0; font-weight: 900; }
+.error-page h2 { font-size: 2rem; margin-bottom: 20px; }
+.error-page p { margin-bottom: 30px; }
+
+/* Mobile menu overlay */
+.mobile-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 100; }
+.mobile-menu { position: fixed; left: 0; top: 0; width: 300px; height: 100%; background: #fff; z-index: 101; padding: 30px 20px; overflow-y: auto; transform: translateX(-100%); transition: transform 0.3s; }
+.mobile-menu.open { transform: translateX(0); }
+.mobile-overlay.show { display: block; }
+.mobile-menu .close-btn { text-align: right; font-size: 1.8rem; color: #000; cursor: pointer; margin-bottom: 20px; }
+.mobile-menu .close-btn:hover { color: #b154f0; }
+.mobile-menu nav a { display: block; padding: 12px 0; border-bottom: 1px solid #e5e7eb; color: #333; font-weight: 600; font-size: 0.95rem; transition: color 0.3s; }
+.mobile-menu nav a:hover { color: #b154f0; }
+
+/* Responsive */
+@media (max-width: 992px) {
+  header nav { display: none; }
+  .mobile-toggle { display: block; }
+  .header-inner { padding: 0 20px; }
+  .game-grid { grid-template-columns: repeat(2, 1fr); }
+  .service-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .footer-right { text-align: left; }
+  .hero { padding-bottom: 50%; }
+}
+@media (max-width: 600px) {
+  .hero { padding-bottom: 60%; }
+  .hero-text { left: 5%; }
+  .game-grid { gap: 20px; }
+  .section-padding { padding: 40px 0; }
+  .cards-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo" style="font-size:1.5rem;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:2px;">ShineVerse</a>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li>
+          <a href="index.html">Match</a>
+          <ul class="sub-menu">
+            <li><a href="match.html">Match Page</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="index.html">Pages</a>
+          <ul class="sub-menu">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="game.html">All Games</a></li>
+            <li><a href="player.html">Players</a></li>
+            <li><a href="FAQ.html">FAQ</a></li>
+            <li><a href="404Error.html">404 Error</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="blog.html">Blog</a>
+          <ul class="sub-menu">
+            <li><a href="blog.html">Blog List</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+    <a href="signup.html" class="signup-btn">Sign up <img src="images/icon/arrrow-icon2.webp" alt="→"></a>
+    <div class="mobile-toggle" onclick="openMenu()">☰</div>
+  </div>
+</header>
+
+<div class="mobile-overlay" id="mobileOverlay" onclick="closeMenu()"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <div class="close-btn" onclick="closeMenu()">✕</div>
+  <div style="margin-bottom:20px;">
+    <a href="signup.html" class="signup-btn" style="width:100%;">Sign up <img src="images/icon/arrrow-icon2.webp" alt="→"></a>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="match.html">Match</a>
+    <a href="about.html">About Us</a>
+    <a href="game.html">All Games</a>
+    <a href="player.html">Players</a>
+    <a href="blog.html">Blog</a>
+    <a href="FAQ.html">FAQ</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="signup.html">Sign Up</a>
+  </nav>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+</section>
+
+<!-- Popular Games -->
+<section class="popular-section">
+  <h2>POPULAR GAME</h2>
+  <p>A collection of popular games from all over the world.</p>
+  <p>Welcome to experience</p>
+  <div class="game-grid">
+    <img src="images/picture/dongwuLOGO.webp" alt="Game 1">
+    <img src="images/picture/haidaoLOGO.webp" alt="Game 2">
+    <img src="images/picture/sanshiLOGO.webp" alt="Game 3">
+    <img src="images/picture/mofaLOGO.webp" alt="Game 4">
+  </div>
+</section>
+
+<!-- Service -->
+<section style="padding: 60px 0;">
+  <div class="container">
+    <div class="section-title">
+      <h2>YOU ARE MOST WELCOME IN GAMING WORLD.</h2>
+    </div>
+    <div class="service-grid">
+      <div class="service-card" style="background-image:url(images/others/gaming-world-bg1.webp)">
+        <img src="images/others/gaming-world1.webp" alt="Top Games">
+        <h3>TOP GAMES</h3>
+        <p>Curated collection of hit mobile & PC games worldwide</p>
+      </div>
+      <div class="service-card" style="background-image:url(images/others/gaming-world-bg2.webp)">
+        <img src="images/others/gaming-world2.webp" alt="Community">
+        <h3>COMMUNITY HUB</h3>
+        <p>Join player communities, events & exclusive giveaways</p>
+      </div>
+      <div class="service-card" style="background-image:url(images/others/gaming-world-bg3.webp)">
+        <img src="images/others/gaming-world3.webp" alt="Support">
+        <h3>SUPPORT CENTER</h3>
+        <p>24/7 player support & game update notifications</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <a href="index.html" class="logo" style="font-size:1.5rem;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:2px;">ShineVerse</a>
+        <div class="social-icons">
+          <a href="#"><img src="images/picture/TIKTOKLOGO.webp" alt="TikTok"></a>
+          <a href="#"><img src="images/picture/DiscordLOGO.webp" alt="Discord"></a>
+          <a href="#"><img src="images/picture/youtubeLOGO.webp" alt="YouTube"></a>
+          <a href="#"><img src="images/picture/XLOGO.webp" alt="X"></a>
+        </div>
+      </div>
+      <div class="footer-right">
+        <h3>Contact</h3>
+        <span>LOCATION:</span>
+        <p>30 N Gould St Ste RSheridan, WY 82801</p>
+        <span>EMAIL:</span>
+        <p>shanqugame@gmail.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 ShineVerse Global Inc.</p>
+      <div class="footer-links">
+        <a href="terms/index.html">TERMS OF SERVICE</a>
+        <a href="privacy/index.html">PRIVACY POLICY</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function openMenu() { document.getElementById('mobileMenu').classList.add('open'); document.getElementById('mobileOverlay').classList.add('show'); }
+function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('mobileOverlay').classList.remove('show'); }
+</script>
+
+</body>
+</html>
